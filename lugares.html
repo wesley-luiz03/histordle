@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Histordle - Lugares Históricos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col font-['Plus_Jakarta_Sans'] pb-12">
+
+    <header class="max-w-4xl w-full mx-auto px-4 pt-6 flex items-center justify-between">
+        <a href="index.html" class="px-4 py-2 bg-slate-900 border border-slate-800 rounded-xl hover:border-amber-500/50 hover:text-amber-400 transition-all text-sm font-semibold">
+            ← Voltar ao Menu
+        </a>
+        <h1 class="font-['Cinzel'] text-2xl font-bold text-amber-500 tracking-wider">HISTORDLE</h1>
+        <div class="w-24"></div>
+    </header>
+
+    <main class="max-w-4xl w-full mx-auto px-4 flex-grow flex flex-col items-center mt-8">
+        
+        <div class="text-center mb-8">
+            <span class="text-4xl">🏛️</span>
+            <h2 class="text-2xl font-bold mt-2">Adivinhe o Lugar Histórico de Hoje!</h2>
+            <p class="text-sm text-slate-400 mt-1">Digite o monumento, cidade ou marco antigo</p>
+        </div>
+
+        <div class="w-full max-w-md relative mb-8 z-50">
+            <div class="flex gap-2">
+                <input type="text" id="palpiteInput" placeholder="Ex: Coliseu..." 
+                    class="w-full bg-slate-900 border border-slate-800 focus:border-amber-500 focus:outline-none rounded-xl px-4 py-3 text-slate-100 placeholder-slate-500 transition-colors">
+                <button id="enviarBtn" class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold px-6 py-3 rounded-xl transition-colors">
+                    Chutar
+                </button>
+            </div>
+            <ul id="sugestoesLista" class="absolute left-0 right-0 mt-1 bg-slate-900 border border-slate-800 rounded-xl max-h-60 overflow-y-auto hidden shadow-2xl divide-y divide-slate-800"></ul>
+        </div>
+
+        <div class="w-full overflow-x-auto">
+            <div class="min-w-[600px] md:min-w-full space-y-3" id="areaPalpites">
+                
+                <div class="grid grid-cols-6 gap-2 text-center text-xs font-bold text-slate-500 uppercase tracking-wider px-2">
+                    <div>Foto</div>
+                    <div>Lugar</div>
+                    <div>Continente</div>
+                    <div>País</div>
+                    <div>Tipo</div>
+                    <div>Ano de Criação</div>
+                    <div>Momento</div>
+                </div>
+
+                <div id="gridPalpites" class="space-y-2"></div>
+
+            </div>
+        </div>
+
+    </main>
+
+    <div id="modalVitoria" class="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 hidden z-50">
+        <div class="bg-slate-900 border border-amber-500/30 rounded-2xl p-8 max-w-md w-full text-center shadow-2xl">
+            <span class="text-6xl animate-bounce inline-block">🎉</span>
+            <h3 class="text-3xl font-black font-['Cinzel'] text-amber-500 mt-4">Vitória!</h3>
+            <p class="text-slate-300 mt-2" id="textoVitoria">Você descobriu o local misterioso do dia!</p>
+            <div class="mt-6 p-4 bg-slate-950 rounded-xl border border-slate-800 text-left space-y-2 text-sm" id="infoLugarDia"></div>
+            <button onclick="fecharModal()" class="mt-6 w-full bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold py-3 rounded-xl transition-colors">
+                Continuar
+            </button>
+        </div>
+    </div>
+
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/lugares.js"></script>
+</body>
+</html>

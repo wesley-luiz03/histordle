@@ -1,0 +1,86 @@
+/* Força a fonte Verdana globalmente em todos os elementos do Histordle */
+* {
+    font-family: 'Verdana', Geneva, Tahoma, sans-serif !important;
+}
+
+/* Fundo histórico com imagem temática e camada de contraste escuro */
+body {
+    background-image: 
+        radial-gradient(circle at 50% 50%, rgba(15, 23, 42, 0.88) 0%, rgba(2, 6, 23, 0.98) 100%),
+        url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=1920&q=80');
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Transições suaves globais para botões e links */
+a, button {
+    transition: all 0.2s ease-in-out;
+}
+
+/* Ajuste sutil na barra de rolagem da lista de sugestões */
+#sugestoesLista::-webkit-scrollbar {
+    width: 6px;
+}
+#sugestoesLista::-webkit-scrollbar-track {
+    background: #0f172a;
+}
+#sugestoesLista::-webkit-scrollbar-thumb {
+    background: #334155;
+    border-radius: 3px;
+}
+
+/* Efeito de vidro sutil nos cards para destacar sobre o fundo */
+.grid-cols-5 > div, .grid-cols-6 > div {
+    backdrop-filter: blur(4px);
+}
+
+/* ==========================================
+   ANIMAÇÃO DE REVELAÇÃO (FLIP 3D)
+   ========================================== */
+
+/* Define a perspectiva do flip */
+.animate-flip {
+    backface-visibility: hidden;
+    animation: flipCard 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    transform: rotateX(-90deg); /* Começa deitada */
+}
+
+@keyframes flipCard {
+    0% {
+        transform: rotateX(-90deg);
+        filter: brightness(0.5);
+    }
+    100% {
+        transform: rotateX(0deg);
+        filter: brightness(1);
+    }
+}
+
+/* Efeito de fade suave para a linha inteira */
+.animate-fade-in {
+    animation: fadeInRow 0.4s ease-out forwards;
+}
+
+@keyframes fadeInRow {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Estilização para as miniaturas de imagem nos blocos de palpite */
+/* Estilo para o bloco exclusivo da foto na tabela */
+.img-palpite-tabela {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px; /* Cantos levemente arredondados super modernos */
+    object-fit: cover;
+    border: 1.5px solid #475569;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}

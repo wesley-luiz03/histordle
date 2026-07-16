@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Histordle - O Jogo de Adivinhação Histórica</title>
+    <!-- Tailwind CSS para um design rápido, moderno e responsivo -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- Fonte Google para dar um estilo mais "histórico/medieval" ou moderno -->
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between font-['Plus_Jakarta_Sans']">
+
+    <!-- Cabeçalho / Logo -->
+    <header class="text-center pt-12 px-4">
+        <div class="inline-block p-4 rounded-full bg-amber-500/10 border border-amber-500/20 mb-4 animate-pulse">
+            <!-- Ícone de Ampulheta/História Temporário -->
+            <span class="text-5xl">⏳</span>
+        </div>
+        <h1 class="font-['Cinzel'] text-5xl md:text-6xl font-black tracking-widest text-amber-500 drop-shadow-[0_2px_10px_rgba(245,158,11,0.3)]">
+            HISTORDLE
+        </h1>
+        <p class="text-slate-400 mt-2 text-sm md:text-base max-w-md mx-auto">
+            Desafie seus conhecimentos diários sobre a história do mundo. Um novo desafio a cada 24 horas!
+        </p>
+    </header>
+
+    <!-- Menu Principal (Modos de Jogo) -->
+    <main class="flex-grow flex items-center justify-center px-4 my-8">
+        <div class="w-full max-w-md space-y-4">
+            
+            <!-- Modo 1: Personagens Históricos -->
+            <a href="personagens.html" class="group flex items-center justify-between p-5 bg-slate-900 border border-slate-800 hover:border-amber-500/50 rounded-2xl transition-all duration-300 hover:scale-[1.02] shadow-lg">
+                <div class="flex items-center space-x-4">
+                    <span class="text-3xl p-3 bg-amber-500/10 rounded-xl group-hover:bg-amber-500/20 transition-colors">👑</span>
+                    <div class="text-left">
+                        <h2 class="font-bold text-lg text-slate-100 group-hover:text-amber-400 transition-colors">Personagens Históricos</h2>
+                        <p class="text-xs text-slate-400">Adivinhe quem é a figura misteriosa do dia</p>
+                    </div>
+                </div>
+                <span class="text-amber-500 font-bold text-xl group-hover:translate-x-1 transition-transform">→</span>
+            </a>
+
+            <!-- Modo 2: Lugares Históricos -->
+            <a href="lugares.html" class="group flex items-center justify-between p-5 bg-slate-900 border border-slate-800 hover:border-amber-500/50 rounded-2xl transition-all duration-300 hover:scale-[1.02] shadow-lg">
+                <div class="flex items-center space-x-4">
+                    <span class="text-3xl p-3 bg-amber-500/10 rounded-xl group-hover:bg-amber-500/20 transition-colors">🏛️</span>
+                    <div class="text-left">
+                        <h2 class="font-bold text-lg text-slate-100 group-hover:text-amber-400 transition-colors">Lugares Históricos</h2>
+                        <p class="text-xs text-slate-400">Descubra monumentos, cidades e marcos antigos</p>
+                    </div>
+                </div>
+                <span class="text-amber-500 font-bold text-xl group-hover:translate-x-1 transition-transform">→</span>
+            </a>
+
+            <!-- Modo 3: Momentos Históricos -->
+            <a href="momentos.html" class="group flex items-center justify-between p-5 bg-slate-900 border border-slate-800 hover:border-amber-500/50 rounded-2xl transition-all duration-300 hover:scale-[1.02] shadow-lg">
+                <div class="flex items-center space-x-4">
+                    <span class="text-3xl p-3 bg-amber-500/10 rounded-xl group-hover:bg-amber-500/20 transition-colors">⚔️</span>
+                    <div class="text-left">
+                        <h2 class="font-bold text-lg text-slate-100 group-hover:text-amber-400 transition-colors">Momentos Históricos</h2>
+                        <p class="text-xs text-slate-400">Encontre batalhas, tratados e marcos temporais</p>
+                    </div>
+                </div>
+                <span class="text-amber-500 font-bold text-xl group-hover:translate-x-1 transition-transform">→</span>
+            </a>
+
+        </div>
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="text-center pb-8 px-4 text-xs text-slate-500">
+        <p>Criado para gamificação de aulas de História.</p>
+        <p class="mt-1">Inspirado em Term.ooo, Loldle e Pokedle.</p>
+    </footer>
+
+</body>
+</html>
