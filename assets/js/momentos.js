@@ -22,7 +22,7 @@ async function carregarBancoDeDados() {
         linhas.shift();
 
         todosMomentos = linhas.map(linha => {
-            const colunas = inline.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
+            // CORRIGIDO: Removida a linha duplicada com o termo 'inline' que causava o travamento
             const arr = linha.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
             return {
                 nome: arr[0]?.replace(/"/g, '').trim(),
@@ -33,6 +33,8 @@ async function carregarBancoDeDados() {
                 imagem: arr[5]?.replace(/"/g, '').trim() || "https://placehold.co/32"
             };
         }).filter(m => m.nome && m.nome.length > 0);
+        
+        console.log(`Sucesso! ${todosMomentos.length} momentos históricos carregados.`);
     } catch (erro) {
         console.error("Falha detalhada de carregamento:", erro);
     }
@@ -180,7 +182,7 @@ function compararAtributos(chute, alvo) {
     const anoAlvo = extrairAno(alvo.ano);
     const diferenca = Math.abs(anoChute - anoAlvo);
     
-    if (anoChute === alvo.ano) {
+    if (anoChute === anoAlvo) {
         res.ano = 'correto';
     } else if (diferenca <= 100) {
         res.ano = 'parcial'; 
@@ -192,6 +194,7 @@ function compararAtributos(chute, alvo) {
     return res;
 }
 
+// ... rest of the parameters remain pristine ...
 function extrairAno(anoStr) {
     if (!anoStr) return 0;
     const limpo = anoStr.toLowerCase().replace("a.c", "").replace("a.c.", "").trim();

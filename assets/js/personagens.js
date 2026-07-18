@@ -1,4 +1,4 @@
-const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRC7YxtfA5fYYBXGRsd_dZeFj8fYJYHu2kanQuQ3aYHhiN2hV2KsOtB5L2dFqPXhZ78x25Em3nMDH6n/pub?output=csv";
+const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRC7YxtfA5fYYBXGRsd_dZeFj8fYJYhu2kanQuQ3aYHhiN2hV2Ks0tB5L2dFqPXhZ78x25Em3nMDH6n/pub?output=csv";
 
 const mapeamentoContinentes = {
     "França": "Europa", "Itália": "Europa", "Alemanha": "Europa", "Inglaterra": "Europa", "Reino Unido": "Europa",
@@ -28,10 +28,11 @@ async function carregarBancoDeDados() {
         if (!resposta.ok) throw new Error(`Erro HTTP! Status: ${resposta.status}`);
         
         const textoCsv = await resposta.text();
-        const lines = textoCsv.split("\n").map(l => l.trim()).filter(l => l.length > 0);
-        lines.shift(); 
+        const linhas = textoCsv.split("\n").map(l => l.trim()).filter(l => l.length > 0);
+        linhas.shift(); 
 
-        todosPersonagens = lines.map(linha => {
+        todosPersonagens = linhas.map(linha => {
+            // CORRIGIDO: Agora a quebra das colunas é feita de forma única e limpa utilizando 'linha'
             const arr = linha.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
             return {
                 nome: arr[0]?.replace(/"/g, '').trim(),
@@ -43,6 +44,8 @@ async function carregarBancoDeDados() {
                 imagem: arr[6]?.replace(/"/g, '').trim() || "https://placehold.co/32"
             };
         }).filter(p => p.nome && p.nome.length > 0); 
+        
+        console.log(`Sucesso! ${todosPersonagens.length} personagens históricos carregados.`);
     } catch (erro) {
         console.error("Falha detalhada de carregamento:", erro);
     }
@@ -210,7 +213,7 @@ function compararAtributos(chute, alvo) {
         res.ano = 'errado';
     }
 
-    res.direcaoAno = anoChute < anoAlvo ? '↑' : '↓'; 
+    res.direcaoAno = anoChute < alvo.ano ? '↑' : '↓'; 
     return res;
 }
 

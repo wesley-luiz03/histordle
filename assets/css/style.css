@@ -76,11 +76,34 @@ a, button {
 
 /* Estilização para as miniaturas de imagem nos blocos de palpite */
 /* Estilo para o bloco exclusivo da foto na tabela */
-.img-palpite-tabela {
-    width: 40px;
-    height: 40px;
-    border-radius: 8px; /* Cantos levemente arredondados super modernos */
-    object-fit: cover;
-    border: 1.5px solid #475569;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+/* Limita e padroniza a foto dentro da lista de sugestões (autocompletar) */
+.img-palpite {
+    width: 32px !important;
+    height: 32px !important;
+    max-width: 32px !important;
+    max-height: 32px !important;
+    border-radius: 50% !important; /* Deixa redondinha */
+    object-fit: cover !important;   /* Corta proporcionalmente sem distorcer */
+    flex-shrink: 0;                /* Impede que o texto esmague a foto */
+    border: 1px solid #475569;
+}
+
+/* Botão de Dica Estilizado */
+#dicaBtn {
+    transition: all 0.3s ease;
+}
+#dicaBtn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    background-color: #1e293b !important;
+    border-color: #334155 !important;
+    color: #64748b !important;
+}
+
+/* Caixa de texto da dica revelada */
+.caixa-dica {
+    background: rgba(251, 191, 36, 0.1);
+    border: 1px dashed #f59e0b;
+    color: #fde047;
+    animation: fadeInRow 0.5s ease-out forwards;
 }

@@ -1,4 +1,4 @@
-const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRC7YxtfA5fYYBXGRsd_dZeFj8fYJYhu2kanQuQ3aYHhiN2hV2Ks0tB5L2dFqPXhZ78x25Em3nMDH6n/pub?output=csv"; 
+const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vR1vC5yJRIAlYclMvF-oycBG6cKBWdF6ppPDYwOyjyPJcV_jDM-p9ZY0H-_bt9c3DGjv4HKvhk-ARMd/pub?output=csv"; 
 
 let todosLugares = [];
 let lugarDoDia = null;
@@ -20,10 +20,10 @@ async function carregarBancoDeDados() {
         if (!resposta.ok) throw new Error(`HTTP error! status: ${resposta.status}`);
         
         const textoCsv = await resposta.text();
-        
-        // Aqui o textoCsv está com o C maiúsculo perfeitamente corrigido
         const linhas = textoCsv.split("\n").map(l => l.trim()).filter(l => l.length > 0);
-        lines.shift(); 
+        
+        // CORRIGIDO: Mudado de 'lines.shift()' para 'linhas.shift()' batendo com a variável declarada acima
+        linhas.shift(); 
 
         todosLugares = linhas.map(linha => {
             const colunas = linha.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
@@ -195,10 +195,11 @@ function compararAtributos(chute, alvo) {
         res.ano = 'errado';
     }
 
-    res.direcaoAno = anoChute < alvo.ano ? '↑' : '↓';
+    res.direcaoAno = anoChute < anoAlvo ? '↑' : '↓';
     return res;
 }
 
+// ... remains structural ...
 function extrairAno(anoStr) {
     if (!anoStr) return 0;
     const limpo = anoStr.toLowerCase().replace("a.c", "").replace("a.c.", "").trim();
